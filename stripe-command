@@ -1,0 +1,25 @@
+Stripe Payment : 
+
+stripe dashboard : -
+ 1) publishable key ( pk_test_51Ko0FPSAZAIQFh7Ah3OK2mbmWM5Vaf8pbgEKNwASYOU7Ai5qgpys9U7xtSz02zBk0Q1jvIQvqp0qikGbnZzF0YdS00FpXeLBUO )
+ 2) secret key ( sk_test_51Ko0FPSAZAIQFh7Amvc23X4lOZQafy1qgJuU7PG23nuCFLKzXjfRPNkBkNCOND4HhAkmokqlorc5ovd2jwK25cUJ00luU9JQpE )
+ 3) webhook key ( https://dashboard.stripe.com/test/webhooks )		
+		
+		1) pip install stripe
+		2) stripe status (new terminal in)
+		3) stripe listen --forward-to localhost:8000/webhook/stripe/ (url-path-name)
+	
+	
+ *****  NGROK *******
+ 
+ 	- snap install ngrok
+ 	(note :- every time ngroc link was changed.)
+ 	- ngrok http 8000 :-http://ca4d-103-239-146-99.ngrok.io 
+ 	
+ 	-  stripe login
+ 	-  stripe listen --forward-to localhost:8000/webhooks/
+
+ 	
+ 
+ auth token : ( 27mQu3p5sYk2NIjdT8zEoUjaKIG_77SWL5mY3KhwvjcWmCcnE )		
+		
