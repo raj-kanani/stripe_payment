@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Thanks for your order!</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+{% extends 'home.html' %}
+
+{% block content %}
+
 <section>
-    <p>
-        <h2>Thank you for Payment</h2>
-        <h3>Your Payment is successfully applied</h3>
-        We appreciate your business! If you have any questions, please email
-        <a href="raj.kanani1487@gmail.com">raj.kanani1487@gmail.com</a>.
-    </p>
+
+
+      <div class="container">
+        <div class="jumbotron text-center mt-5">
+
+                <h2>Thank you for Payment</h2>
+              <p>
+                We appreciate your business! If you have any questions, please email
+                <a href="raj.kanani1487@gmail.com">raj.kanani1487@gmail.com</a>.
+              </p>
+            <br><hr>
+
+            <h1 class="text-success">Payment Success</h1>
+            <p>We received your order. You can now close this window or use the
+                link below to visit
+                <a href="{% url 'home' %}">home page</a>.
+            </p>
+        </div>
+    </div>
+
 </section>
-</body>
-</html>
+
+
+{% endblock %}

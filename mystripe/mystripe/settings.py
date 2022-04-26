@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-m@p7auuy$w1)m+&q!-+%x93-sn&%!uoy5^*!lsr2k0&ad!&=#+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['5af6-103-239-146-99.ngrok.io', '*']
+ALLOWED_HOSTS = ['4e4b-103-239-146-99.ngrok.io', '*']
 
 # Application definition
 
@@ -112,6 +112,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# MEDIA_URL = '/images/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+# MEDIA_ROOT = os.path.join()
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -122,4 +128,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51Ko0FPSAZAIQFh7Ah3OK2mbmWM5Vaf8pbgEKNwASYOU7Ai5qgpys9U7xtSz02zBk0Q1jvIQvqp0qikGbnZzF0YdS00FpXeLBUO'
 STRIPE_SECRET_KEY = 'sk_test_51Ko0FPSAZAIQFh7Amvc23X4lOZQafy1qgJuU7PG23nuCFLKzXjfRPNkBkNCOND4HhAkmokqlorc5ovd2jwK25cUJ00luU9JQpE'
-STRIPE_WEBHOOK_SECRET = 'whsec_moahaffEfuQ62CT7pgDxWmPugYYhniNs'
+STRIPE_WEBHOOK_SECRET = 'whsec_uVYFu4dhKqW3J9GYqbF26pEOyG10oL5N'

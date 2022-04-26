@@ -1,13 +1,17 @@
-import json
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy
 from django.views import View
 import stripe
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView
-from .models import Product
-from django.http import JsonResponse, HttpResponse
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
+from rest_framework import viewsets
+
+from .models import Product, OrderDetail
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
+
+from .serializers import ProductSerializers
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -24,7 +28,7 @@ class ProductLanding(TemplateView):
     template_name = 'landing.html'
 
     def get_context_data(self, **kwargs):
-        product = Product.objects.get(name='Samsung')
+        product = Product.objects.get(name='Vivo')
         context = super(ProductLanding, self).get_context_data(**kwargs)
         context.update({
             'product': product,
@@ -46,7 +50,6 @@ class CreateCheckoutSession(View):
                     'price_data': {'currency': 'inr',
                                    'unit_amount': product.price,
                                    'product_data': {'name': product.name}},
-                    # 'price': product.price,
                     'quantity': 1,
                 },
             ],
@@ -116,3 +119,41 @@ class StripeIntent(View):
             })
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
+
+class ProductCreate(CreateView):
+    model = Product
+    fields = '__all__'
+    template_name = 'product_create.html'
+    success_url = reverse_lazy('home')
+
+
+class ProductList(ListView):
+    model = Product
+    template_name = 'product_list.html'
+    context_object_name = 'product_list'
+
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'project_detail.html'
+    pk_url_kwarg = 'id'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetail, self).get_context_data(**kwargs)
+        context['strip_publishable_key'] = settings.STRIPE_PUBLIC_KEY
+        return context
+
+
+class OrderHistory(ListView):
+    model = OrderDetail
+    template_name = 'order_history.html'
+
+
+class PaymentFailed(TemplateView):
+    template_name = 'payment_failed.html'
+
+
+class PaymentAPI(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
