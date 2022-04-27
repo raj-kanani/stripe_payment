@@ -21,6 +21,6 @@ urlpatterns = [
     path('detail/<id>/', views.ProductDetail.as_view(), name='detail'),
     path('history/', views.OrderHistory.as_view(), name='history'),
     path('failed/', views.PaymentFailed.as_view(), name='failed'),
-    # path('payment/', views.PaymentAPI.as_view, name='payment'),
+
 
 ]
